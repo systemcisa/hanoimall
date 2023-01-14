@@ -1,40 +1,40 @@
 {
   "project_info": {
-    "project_number": "620028397667",
-    "project_id": "tomator-1e3fc",
-    "storage_bucket": "tomator-1e3fc.appspot.com"
+    "project_number": "687814096056",
+    "project_id": "hanoimall",
+    "storage_bucket": "hanoimall.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:620028397667:android:5c67dc83927f1bde245056",
+        "mobilesdk_app_id": "1:687814096056:android:5a8110d6769e3def5af04d",
         "android_client_info": {
-          "package_name": "com.somiseojun.shalomhouse"
+          "package_name": "com.somiseojun.hanoimall"
         }
       },
       "oauth_client": [
         {
-          "client_id": "620028397667-5o3j9gp4mhu0ifhmosm9m0noqnsjh6ab.apps.googleusercontent.com",
+          "client_id": "687814096056-ip2enqg8vc0viad2hgk15d7uof0hvc7b.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDe2cu4KsXw39t9KdTIie__emtkOq2rhI8"
+          "current_key": "AIzaSyDDfFR8D3Iwu-PNujEY7FmsrYxRLag_e3w"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "620028397667-5o3j9gp4mhu0ifhmosm9m0noqnsjh6ab.apps.googleusercontent.com",
+              "client_id": "687814096056-ip2enqg8vc0viad2hgk15d7uof0hvc7b.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "620028397667-7112lip8fe3olnnutdmrjolcdrinqe9i.apps.googleusercontent.com",
+              "client_id": "687814096056-f0cmg08us95k2cgbunl3aa6dqli590m2.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.somiseojun.shalomhouse"
+                "bundle_id": "com.somisaehyun.hanoimall"
               }
             }
           ]
