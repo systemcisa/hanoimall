@@ -2,10 +2,10 @@ import 'package:extended_image/extended_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:beamer/beamer.dart';
-import 'package:shalomhouse/constants/common_size.dart';
-import 'package:shalomhouse/data/record_model.dart';
-import 'package:shalomhouse/router/locations.dart';
-import 'package:shalomhouse/utils/logger.dart';
+import 'package:hanoimall/constants/common_size.dart';
+import 'package:hanoimall/data/record_model.dart';
+import 'package:hanoimall/router/locations.dart';
+import 'package:hanoimall/utils/logger.dart';
 import 'package:intl/intl.dart';
 
 class RecordListWidget extends StatelessWidget {
@@ -35,15 +35,15 @@ class RecordListWidget extends StatelessWidget {
         height: imgSize,
         child: Row(
           children: [
-            SizedBox(
-                height: imgSize,
-                width: imgSize,
-                child: ExtendedImage.network(
-                  record.imageDownloadUrls[0],
-                  fit: BoxFit.cover,
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(12),
-                )),
+            // SizedBox(
+            //     height: imgSize,
+            //     width: imgSize,
+            //     child: ExtendedImage.network(
+            //       record.imageDownloadUrls[0],
+            //       fit: BoxFit.cover,
+            //       shape: BoxShape.rectangle,
+            //       borderRadius: BorderRadius.circular(12),
+            //     )),
             const SizedBox(
               width: common_sm_padding,
             ),

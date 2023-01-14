@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:shalomhouse/constants/data_keys.dart';
+import 'package:hanoimall/constants/data_keys.dart';
 
 class OrderModel {
   late String orderKey;
@@ -59,13 +59,9 @@ class OrderModel {
     price = json[DOC_PRICE] ?? 0;
     negotiable = json[DOC_NEGOTIABLE] ?? false;
     detail = json[DOC_DETAIL] ?? "";
-    address = json[DOC_ADDRESS] ?? "";
-    isChecked1 = json[DOC_ISCHECKED1] ?? false;
-    isChecked2 = json[DOC_ISCHECKED2] ?? false;
-    isChecked3 = json[DOC_ISCHECKED3] ?? false;
-    isChecked4 = json[DOC_ISCHECKED4] ?? false;
-    isChecked5 = json[DOC_ISCHECKED5] ?? false;
-    isChecked6 = json[DOC_ISCHECKED6] ?? false;
+    address = json[DOC_ADDRESS1] ?? "";
+    isChecked1 = json[DOC_ISCHECKED] ?? false;
+
     createdDate = json[DOC_CREATEDDATE] == null
         ? DateTime.now().toUtc()
         : (json[DOC_CREATEDDATE] as Timestamp).toDate();
@@ -84,13 +80,9 @@ class OrderModel {
     price = json[DOC_PRICE] ?? 0;
     negotiable = json[DOC_NEGOTIABLE] ?? false;
     detail = json[DOC_DETAIL] ?? "";
-    address = json[DOC_ADDRESS] ?? "";
-    isChecked1 = json[DOC_ISCHECKED1] ?? false;
-    isChecked2 = json[DOC_ISCHECKED2] ?? false;
-    isChecked3 = json[DOC_ISCHECKED3] ?? false;
-    isChecked4 = json[DOC_ISCHECKED4] ?? false;
-    isChecked5 = json[DOC_ISCHECKED5] ?? false;
-    isChecked6 = json[DOC_ISCHECKED6] ?? false;
+    address = json[DOC_ADDRESS1] ?? "";
+    isChecked1 = json[DOC_ISCHECKED] ?? false;
+
     createdDate = DateTime.now().toUtc();
   }
 
@@ -113,13 +105,8 @@ class OrderModel {
     map[DOC_PRICE] = price;
     map[DOC_NEGOTIABLE] = negotiable;
     map[DOC_DETAIL] = detail;
-    map[DOC_ADDRESS] = address;
-    map[DOC_ISCHECKED1] = isChecked1;
-    map[DOC_ISCHECKED2] = isChecked2;
-    map[DOC_ISCHECKED3] = isChecked3;
-    map[DOC_ISCHECKED4] = isChecked4;
-    map[DOC_ISCHECKED5] = isChecked5;
-    map[DOC_ISCHECKED6] = isChecked6;
+    map[DOC_ADDRESS1] = address;
+
     map[DOC_CREATEDDATE] = createdDate;
     return map;
   }

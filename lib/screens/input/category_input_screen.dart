@@ -1,6 +1,6 @@
 import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
-import 'package:shalomhouse/states/category_notifier.dart';
+import 'package:hanoimall/states/category_notifier.dart';
 import 'package:provider/provider.dart';
 
 class CategoryInputScreen extends StatelessWidget {

@@ -2,8 +2,8 @@ import 'dart:typed_data';
 
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
-import 'package:shalomhouse/constants/common_size.dart';
-import 'package:shalomhouse/states/select_image_notifier.dart';
+import 'package:hanoimall/constants/common_size.dart';
+import 'package:hanoimall/states/select_image_notifier.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 

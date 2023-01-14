@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:shalomhouse/constants/common_size.dart';
-import 'package:shalomhouse/data/order_model.dart';
-import 'package:shalomhouse/repo/order_service.dart';
-import 'package:shalomhouse/utils/logger.dart';
-import 'package:shalomhouse/widgets/order_list_widget.dart';
+import 'package:hanoimall/constants/common_size.dart';
+import 'package:hanoimall/data/order_model.dart';
+import 'package:hanoimall/repo/order_service.dart';
+import 'package:hanoimall/utils/logger.dart';
+import 'package:hanoimall/widgets/order_list_widget.dart';
 import 'package:shimmer/shimmer.dart';
 
 class OrdersPage extends StatefulWidget {

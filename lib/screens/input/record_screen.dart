@@ -4,15 +4,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:shalomhouse/constants/common_size.dart';
-import 'package:shalomhouse/data/record_model.dart';
-import 'package:shalomhouse/repo/image_storage.dart';
-import 'package:shalomhouse/repo/record_service.dart';
-import 'package:shalomhouse/screens/input/multi_image_select.dart';
-import 'package:shalomhouse/states/category_notifier.dart';
-import 'package:shalomhouse/states/select_image_notifier.dart';
-import 'package:shalomhouse/states/user_notifier.dart';
-import 'package:shalomhouse/utils/logger.dart';
+import 'package:hanoimall/constants/common_size.dart';
+import 'package:hanoimall/data/record_model.dart';
+import 'package:hanoimall/repo/image_storage.dart';
+import 'package:hanoimall/repo/record_service.dart';
+import 'package:hanoimall/screens/input/multi_image_select.dart';
+import 'package:hanoimall/states/category_notifier.dart';
+import 'package:hanoimall/states/select_image_notifier.dart';
+import 'package:hanoimall/states/user_notifier.dart';
+import 'package:hanoimall/utils/logger.dart';
 import 'package:provider/provider.dart';
 
 class RecordScreen extends StatefulWidget {
@@ -24,16 +24,13 @@ class RecordScreen extends StatefulWidget {
 
 class _RecordScreenState extends State<RecordScreen> {
   String _address = 'A동';
-  bool _isChecked1 = false;
-  bool _isChecked2 = false;
-  bool _isChecked3 = false;
-  bool _isChecked4 = false;
-  bool _isChecked5 = false;
-  bool _isChecked6 = false;
-  bool _isChecked7 = false;
-  bool _isChecked8 = false;
-  bool _isChecked9 = false;
+  bool _isChecked = false;
   bool _seuggestPriceSelected = false;
+  bool isCreatingItem = false;
+  bool _isDelivery = false;
+  bool _isCompletion = false;
+
+
 
   var _border =
       const UnderlineInputBorder(borderSide: BorderSide(color: Colors.transparent));
@@ -46,11 +43,25 @@ class _RecordScreenState extends State<RecordScreen> {
     endIndent: common_padding,
   );
 
-  bool isCreatingItem = false;
+
 
   TextEditingController _nameController = TextEditingController();
   TextEditingController _priceController = TextEditingController();
   TextEditingController _addressController = TextEditingController();
+  TextEditingController _addressController1 = TextEditingController();
+  TextEditingController _addressController2 = TextEditingController();
+  TextEditingController _addressController3 = TextEditingController();
+  TextEditingController _addressController4 = TextEditingController();
+  TextEditingController _addressController5 = TextEditingController();
+  TextEditingController _addressController6 = TextEditingController();
+  TextEditingController _addressController7 = TextEditingController();
+  TextEditingController _addressController8 = TextEditingController();
+  TextEditingController _addressController9 = TextEditingController();
+  TextEditingController _addressController10 = TextEditingController();
+  TextEditingController _addressController11 = TextEditingController();
+  TextEditingController _addressController12 = TextEditingController();
+  TextEditingController _addressController13 = TextEditingController();
+  TextEditingController _addressController14 = TextEditingController();
   TextEditingController _detailController = TextEditingController();
 
   void attemptCreateItem() async {
@@ -72,19 +83,26 @@ class _RecordScreenState extends State<RecordScreen> {
         userKey: userKey,
         studentname: userNotifier.userModel!.studentname,
         studentnum: userNotifier.userModel!.studentnum,
-        imageDownloadUrls: downloadUrls,
+    //    imageDownloadUrls: downloadUrls,
         recorddate: _nameController.text,
         title: _address,
-        address: _addressController.text,
-        isChecked1: _isChecked1,
-        isChecked2: _isChecked2,
-        isChecked3: _isChecked3,
-        isChecked4: _isChecked4,
-        isChecked5: _isChecked5,
-        isChecked6: _isChecked6,
-        isChecked7: _isChecked7,
-        isChecked8: _isChecked8,
-        isChecked9: _isChecked9,
+        address1: _addressController1.text,
+        address2: _addressController2.text,
+        address3: _addressController3.text,
+        address4: _addressController4.text,
+        address5: _addressController5.text,
+        address6: _addressController6.text,
+        address7: _addressController7.text,
+        address8: _addressController8.text,
+        address9: _addressController9.text,
+        address10: _addressController10.text,
+        address11: _addressController11.text,
+        address12: _addressController12.text,
+        address13: _addressController13.text,
+        address14: _addressController14.text,
+        isChecked: _isChecked,
+        delivery: _isDelivery,
+        completion: _isCompletion,
         category: context.read<CategoryNotifier>().currentCategoryInEng,
         price: price ?? 0,
         negotiable: _seuggestPriceSelected,
@@ -127,7 +145,7 @@ class _RecordScreenState extends State<RecordScreen> {
                     context.beamBack();
                   },
                 ),
-                title: const Text('전기점검 신청'),
+                title: const Text('동대문 사입'),
                 actions: [
                   TextButton(
                       style: TextButton.styleFrom(
@@ -144,8 +162,8 @@ class _RecordScreenState extends State<RecordScreen> {
                 ],
               ),
               body: ListView(children: [
-                MultiImageSelect(),
-                _divider,
+             //   MultiImageSelect(),
+           //     _divider,
                 TextFormField(
                   controller: _nameController,
                   decoration: InputDecoration(
@@ -157,48 +175,7 @@ class _RecordScreenState extends State<RecordScreen> {
                       focusedBorder: _border),
                 ),
                 _divider,
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    const Text('위치'),
-                    ListTile(
-                      title: const Text('A동'),
-                      leading: Radio(
-                        value: "A동",
-                        groupValue: _address,
-                        onChanged: (value) {
-                          setState(() {
-                            _address = value.toString();
-                          });
-                        },
-                      ),
-                    ),
-                    ListTile(
-                      title: const Text('B동'),
-                      leading: Radio(
-                        value: 'B동',
-                        groupValue: _address,
-                        onChanged: (value) {
-                          setState(() {
-                            _address = value.toString();
-                          });
-                        },
-                      ),
-                    ),
-                    ListTile(
-                      title: const Text('국생'),
-                      leading: Radio(
-                        value: '국생',
-                        groupValue: _address,
-                        onChanged: (value) {
-                          setState(() {
-                            _address = value.toString();
-                          });
-                        },
-                      ),
-                    ),
-                  ],
-                ),
+
                 _divider,
                 TextFormField(
                   controller: _addressController,
@@ -211,67 +188,9 @@ class _RecordScreenState extends State<RecordScreen> {
                       focusedBorder: _border),
                 ),
                 _divider,
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    const Text('방'),
-                    CheckboxListTile(
-                        title: const Text('A방'),
-                        value: _isChecked1,
-                        onChanged: (value) {
-                          setState(() {
-                            _isChecked1 = value!;
-                          });
-                        }),
-                    CheckboxListTile(
-                        title: const Text('B방'),
-                        value: _isChecked2,
-                        onChanged: (value) {
-                          setState(() {
-                            _isChecked2 = value!;
-                          });
-                        }),
-                  ],
-                ),
+
                 _divider,
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    const Text('번'),
-                    CheckboxListTile(
-                        title: const Text('1'),
-                        value: _isChecked3,
-                        onChanged: (value) {
-                          setState(() {
-                            _isChecked3 = value!;
-                          });
-                        }),
-                    CheckboxListTile(
-                        title: const Text('2'),
-                        value: _isChecked4,
-                        onChanged: (value) {
-                          setState(() {
-                            _isChecked4 = value!;
-                          });
-                        }),
-                    CheckboxListTile(
-                        title: const Text('3'),
-                        value: _isChecked5,
-                        onChanged: (value) {
-                          setState(() {
-                            _isChecked5 = value!;
-                          });
-                        }),
-                    CheckboxListTile(
-                        title: const Text('4'),
-                        value: _isChecked6,
-                        onChanged: (value) {
-                          setState(() {
-                            _isChecked6 = value!;
-                          });
-                        }),
-                  ],
-                ),
+
                 _divider,
                 TextFormField(
                   controller: _detailController,
@@ -287,42 +206,8 @@ class _RecordScreenState extends State<RecordScreen> {
                       focusedBorder: _border),
                 ),
                 _divider,
-                const Text('''전기작업만 희망 시간 체크
-*같은 호실 학생들과 조율 필수*
--체크한 시간에 랜덤 방문
--관리자가 신청 폼 확인하는 시간 기준으로 함
-(오전 9시)
--중복체크 가능'''),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    CheckboxListTile(
-                        title: const Text('''당일 오후(1시~4시20분 사이 / 오전11시 30
-분까지 접수 가능)'''),
-                        value: _isChecked7,
-                        onChanged: (value) {
-                          setState(() {
-                            _isChecked7 = value!;
-                          });
-                        }),
-                    CheckboxListTile(
-                        title: const Text('다음날 오전'),
-                        value: _isChecked8,
-                        onChanged: (value) {
-                          setState(() {
-                            _isChecked8 = value!;
-                          });
-                        }),
-                    CheckboxListTile(
-                        title: const Text('다음날 오후'),
-                        value: _isChecked9,
-                        onChanged: (value) {
-                          setState(() {
-                            _isChecked9 = value!;
-                          });
-                        }),
-                  ],
-                ),
+
+
               ]),
             ));
       },

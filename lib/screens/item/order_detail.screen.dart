@@ -3,10 +3,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:shalomhouse/constants/common_size.dart';
-import 'package:shalomhouse/data/order_model.dart';
-import 'package:shalomhouse/data/user_model.dart';
-import 'package:shalomhouse/repo/order_service.dart';
+import 'package:hanoimall/constants/common_size.dart';
+import 'package:hanoimall/data/order_model.dart';
+import 'package:hanoimall/data/user_model.dart';
+import 'package:hanoimall/repo/order_service.dart';
 import 'package:intl/intl.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 

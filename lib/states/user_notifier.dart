@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:shalomhouse/constants/shared_pref_keys.dart';
-import 'package:shalomhouse/data/user_model.dart';
-import 'package:shalomhouse/repo/user_service.dart';
-import 'package:shalomhouse/utils/logger.dart';
+import 'package:hanoimall/constants/shared_pref_keys.dart';
+import 'package:hanoimall/data/user_model.dart';
+import 'package:hanoimall/repo/user_service.dart';
+import 'package:hanoimall/utils/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserNotifier extends ChangeNotifier {

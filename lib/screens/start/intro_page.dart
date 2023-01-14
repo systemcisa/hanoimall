@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
-import 'package:shalomhouse/constants/common_size.dart';
-import 'package:shalomhouse/states/user_notifier.dart';
-import 'package:shalomhouse/utils/logger.dart';
+import 'package:hanoimall/constants/common_size.dart';
+import 'package:hanoimall/states/user_notifier.dart';
+import 'package:hanoimall/utils/logger.dart';
 import 'package:provider/provider.dart';
 
 class IntroPage extends StatelessWidget {

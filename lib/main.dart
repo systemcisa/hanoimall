@@ -2,12 +2,12 @@ import 'package:beamer/beamer.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:shalomhouse/router/locations.dart';
-import 'package:shalomhouse/screens/splash_screen.dart';
-import 'package:shalomhouse/screens/start/auth_page.dart';
-import 'package:shalomhouse/screens/start_screen.dart';
-import 'package:shalomhouse/states/user_notifier.dart';
-import 'package:shalomhouse/utils/logger.dart';
+import 'package:hanoimall/router/locations.dart';
+import 'package:hanoimall/screens/splash_screen.dart';
+import 'package:hanoimall/screens/start/auth_page.dart';
+import 'package:hanoimall/screens/start_screen.dart';
+import 'package:hanoimall/states/user_notifier.dart';
+import 'package:hanoimall/utils/logger.dart';
 import 'package:provider/provider.dart';
 
 
@@ -47,10 +47,10 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return FutureBuilder<Object>(
-        future: _initialization,
+        future:  _initialization,
         builder: (context, snapshot) {
           return AnimatedSwitcher(
-              duration: Duration(seconds: 1),
+              duration: const Duration(milliseconds: 300),
               child: _splashLoadingWidget(snapshot));
         });
   }
@@ -58,14 +58,14 @@ class _MyAppState extends State<MyApp> {
   StatelessWidget _splashLoadingWidget(AsyncSnapshot<Object?> snapshot) {
     if (snapshot.hasError) {
       // print('error occur while loading.');
-      return Text(
+      return const Text(
         'Error occur',
         textDirection: TextDirection.ltr,
       );
     } else if (snapshot.connectionState == ConnectionState.done) {
-      return TomatoApp();
+      return const TomatoApp();
     } else {
-      return SplashScreen();
+      return const SplashScreen();
     }
   }
 }
@@ -84,13 +84,13 @@ class TomatoApp extends StatelessWidget {
             primarySwatch: Colors.red,
             fontFamily: 'DoHyeon',
             hintColor: Colors.grey[350],
-            textTheme: TextTheme(button: TextStyle(color: Colors.white)),
+            textTheme: const TextTheme(button: TextStyle(color: Colors.white)),
             textButtonTheme: TextButtonThemeData(
                 style: TextButton.styleFrom(
                     backgroundColor: Colors.red,
                     primary: Colors.white,
-                    minimumSize: Size(10, 48))),
-            appBarTheme: AppBarTheme(
+                    minimumSize: const Size(10, 48))),
+            appBarTheme: const AppBarTheme(
                 backgroundColor: Colors.white,
                 foregroundColor: Colors.black87,
                 titleTextStyle: TextStyle(

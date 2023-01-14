@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:shalomhouse/constants/data_keys.dart';
-import 'package:shalomhouse/data/record_model.dart';
+import 'package:hanoimall/constants/data_keys.dart';
+import 'package:hanoimall/data/record_model.dart';
 
 class RecordService{
   static final RecordService _recordService = RecordService._internal();

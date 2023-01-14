@@ -2,12 +2,12 @@ import 'package:beamer/src/beamer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
-import 'package:shalomhouse/constants/common_size.dart';
-import 'package:shalomhouse/data/order_model.dart';
-import 'package:shalomhouse/data/record_model.dart';
-import 'package:shalomhouse/repo/order_service.dart';
+import 'package:hanoimall/constants/common_size.dart';
+import 'package:hanoimall/data/order_model.dart';
+import 'package:hanoimall/data/record_model.dart';
+import 'package:hanoimall/repo/order_service.dart';
 import 'package:intl/intl.dart';
-import 'package:shalomhouse/repo/record_service.dart';
+import 'package:hanoimall/repo/record_service.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class RecordDetailScreen extends StatefulWidget {
@@ -62,9 +62,14 @@ class _RecordDetailScreenState extends State<RecordDetailScreen> {
     super.dispose();
   }
 
-  void _goToChatroom(String orderKey, bool negotiable) async {
+  void _goToDelivery(String orderKey, bool negotiable) async {
     FirebaseFirestore.instance.collection("records").doc(orderKey).update({
-      "negotiable": true,
+      "delivery": true,
+    });
+  }
+  void _goToCompletion(String orderKey, bool negotiable) async {
+    FirebaseFirestore.instance.collection("records").doc(orderKey).update({
+      "completion": true,
     });
   }
 
@@ -93,113 +98,38 @@ class _RecordDetailScreenState extends State<RecordDetailScreen> {
                                   top: BorderSide(color: Colors.grey[300]!))),
                           child: Padding(
                             padding: const EdgeInsets.all(common_sm_padding),
-                            child: TextButton(
-                                onPressed: () async {
-                                  _goToChatroom(recordModel.recordKey, true);
-                                  context.beamBack();
-                                },
-                                child: const Text('작업완료')),
+                            child: Row(
+                              children: [
+                                TextButton(
+                                    onPressed: () async {
+                                      _goToDelivery(recordModel.recordKey, true);
+                                      context.beamBack();
+                                    },
+                                    child: const Text('택배보냄')),
+                                TextButton(
+                                    onPressed: () async {
+                                      _goToCompletion(recordModel.recordKey, true);
+                                      context.beamBack();
+                                    },
+                                    child: const Text('완료')),
+                              ],
+                            ),
+
                           ),
                         ),
                       ),
                       body: CustomScrollView(
                         controller: _scrollController,
                         slivers: [
-                          _imagesAppBar(recordModel),
+                   //       _imagesAppBar(recordModel),
                           SliverPadding(
                             padding: const EdgeInsets.all(common_padding),
                             sliver: SliverList(
                                 delegate: SliverChildListDelegate([
-                              _divider,
-                              const Text("전기작업 ",
-                                  style: TextStyle(
-                                      color: Colors.black, fontSize: 20)),
-                              Text("요청일 : ${recordModel.recorddate}",
+                                  SizedBox(height: 60,),
+                              Text(DateFormat('MM-dd KKmm').format(recordModel.createdDate),
                                   style: const TextStyle(
                                       color: Colors.black, fontSize: 20)),
-                              Text(
-                                  "요청 건물 : ${recordModel.title} ${recordModel.address}호",
-                                  style: const TextStyle(
-                                      color: Colors.black, fontSize: 20)),
-                              Row(
-                                children: [
-                                  const Text("방 : ",
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                      )),
-                                  Text(
-                                      (recordModel.isChecked1 == true)
-                                          ? "A방 "
-                                          : "",
-                                      style: const TextStyle(color: Colors.black)),
-                                  Text(
-                                      (recordModel.isChecked2 == true)
-                                          ? "B방 "
-                                          : "",
-                                      style: const TextStyle(color: Colors.black)),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  const Text("번 : ",
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                      )),
-                                  Text(
-                                      (recordModel.isChecked3 == true)
-                                          ? "1번  "
-                                          : "",
-                                      style: const TextStyle(color: Colors.black)),
-                                  Text(
-                                      (recordModel.isChecked4 == true)
-                                          ? "2번  "
-                                          : "",
-                                      style: const TextStyle(color: Colors.black)),
-                                  Text(
-                                      (recordModel.isChecked5 == true)
-                                          ? "3번  "
-                                          : "",
-                                      style: const TextStyle(color: Colors.black)),
-                                  Text(
-                                    (recordModel.isChecked6 == true)
-                                        ? "4번  "
-                                        : "",
-                                    style: const TextStyle(color: Colors.black),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  const Text("요청시간 : ",
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                      )),
-                                  Text(
-                                      (recordModel.isChecked7 == true)
-                                          ? "1시~4시20분 사이  "
-                                          : "",
-                                      style: const TextStyle(color: Colors.black)),
-                                  Text(
-                                      (recordModel.isChecked8 == true)
-                                          ? "다음날 오전  "
-                                          : "",
-                                      style: const TextStyle(color: Colors.black)),
-                                  Text(
-                                      (recordModel.isChecked9 == true)
-                                          ? "다음날 오후  "
-                                          : "",
-                                      style: const TextStyle(color: Colors.black)),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Text(
-                                      //        ' · ${TimeCalculation.getTimeDiff(orderModel.createdDate)}',
-                                      '작업의뢰 작성일 : ${DateFormat('MM-dd KKmm').format(recordModel.createdDate)}',
-                                      style: const TextStyle(
-                                          color: Colors.black, fontSize: 20)),
-                                ],
-                              ),
                               Divider(
                                 height: 2,
                                 thickness: 2,
@@ -281,37 +211,37 @@ class _RecordDetailScreenState extends State<RecordDetailScreen> {
         });
   }
 
-  SliverAppBar _imagesAppBar(RecordModel recordModel) {
-    return SliverAppBar(
-      expandedHeight: _size!.width,
-      pinned: true,
-      flexibleSpace: FlexibleSpaceBar(
-        title: SizedBox(
-          child: SmoothPageIndicator(
-              controller: _pageController, // PageController
-              count: recordModel.imageDownloadUrls.length,
-              effect: const WormEffect(
-                  dotColor: Colors.white24,
-                  activeDotColor: Colors.white,
-                  radius: 2,
-                  dotHeight: 4,
-                  dotWidth: 4), // yo// ur preferred effect
-              onDotClicked: (index) {}),
-        ),
-        centerTitle: true,
-        background: PageView.builder(
-          controller: _pageController,
-          allowImplicitScrolling: true,
-          itemBuilder: (context, index) {
-            return ExtendedImage.network(
-              recordModel.imageDownloadUrls[index],
-              fit: BoxFit.cover,
-              scale: 0.1,
-            );
-          },
-          itemCount: recordModel.imageDownloadUrls.length,
-        ),
-      ),
-    );
-  }
+  // SliverAppBar _imagesAppBar(RecordModel recordModel) {
+  //   return SliverAppBar(
+  //     expandedHeight: _size!.width,
+  //     pinned: true,
+  //     flexibleSpace: FlexibleSpaceBar(
+  //       title: SizedBox(
+  //         child: SmoothPageIndicator(
+  //             controller: _pageController, // PageController
+  //             count: recordModel.imageDownloadUrls.length,
+  //             effect: const WormEffect(
+  //                 dotColor: Colors.white24,
+  //                 activeDotColor: Colors.white,
+  //                 radius: 2,
+  //                 dotHeight: 4,
+  //                 dotWidth: 4), // yo// ur preferred effect
+  //             onDotClicked: (index) {}),
+  //       ),
+  //       centerTitle: true,
+  //       background: PageView.builder(
+  //         controller: _pageController,
+  //         allowImplicitScrolling: true,
+  //         itemBuilder: (context, index) {
+  //           return ExtendedImage.network(
+  //             recordModel.imageDownloadUrls[index],
+  //             fit: BoxFit.cover,
+  //             scale: 0.1,
+  //           );
+  //         },
+  //         itemCount: recordModel.imageDownloadUrls.length,
+  //       ),
+  //     ),
+  //   );
+  // }
 }

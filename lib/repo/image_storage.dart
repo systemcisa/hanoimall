@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:shalomhouse/utils/logger.dart';
+import 'package:hanoimall/utils/logger.dart';
 
 
 class ImageStorage{

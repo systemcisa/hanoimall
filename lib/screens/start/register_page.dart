@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shalomhouse/constants/common_size.dart';
-import 'package:shalomhouse/data/user_model.dart';
+import 'package:hanoimall/constants/common_size.dart';
+import 'package:hanoimall/data/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class RegisterPage extends StatefulWidget {

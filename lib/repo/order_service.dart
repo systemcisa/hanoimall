@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:shalomhouse/constants/data_keys.dart';
-import 'package:shalomhouse/data/order_model.dart';
-import 'package:shalomhouse/utils/logger.dart';
+import 'package:hanoimall/constants/data_keys.dart';
+import 'package:hanoimall/data/order_model.dart';
+import 'package:hanoimall/utils/logger.dart';
 
 class OrderService {
   static final OrderService _orderService = OrderService._internal();

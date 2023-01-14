@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:shalomhouse/constants/data_keys.dart';
-import 'package:shalomhouse/data/user_model.dart';
+import 'package:hanoimall/constants/data_keys.dart';
+import 'package:hanoimall/data/user_model.dart';
 
 class UserService {
   static final UserService _userService = UserService._internal();

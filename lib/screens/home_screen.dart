@@ -3,14 +3,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shalomhouse/data/user_model.dart';
-import 'package:shalomhouse/router/locations.dart';
-import 'package:shalomhouse/screens/home/me_page.dart';
-import 'package:shalomhouse/screens/home/orders_page.dart';
-import 'package:shalomhouse/screens/home/home_page.dart';
-import 'package:shalomhouse/screens/home/records_page.dart';
-import 'package:shalomhouse/states/user_notifier.dart';
-import 'package:shalomhouse/widgets/expandable_fab.dart';
+import 'package:hanoimall/data/user_model.dart';
+import 'package:hanoimall/router/locations.dart';
+import 'package:hanoimall/screens/home/me_page.dart';
+import 'package:hanoimall/screens/home/orders_page.dart';
+import 'package:hanoimall/screens/home/home_page.dart';
+import 'package:hanoimall/screens/home/records_page.dart';
+import 'package:hanoimall/states/user_notifier.dart';
+import 'package:hanoimall/widgets/expandable_fab.dart';
 
 class HomeScreen extends StatefulWidget {
 

@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:shalomhouse/constants/data_keys.dart';
+import 'package:hanoimall/constants/data_keys.dart';
 
 class UserModel {
     late String userKey;
