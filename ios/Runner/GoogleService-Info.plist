@@ -3,23 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>620028397667-nftm8l4cjnrgkcpju660rmf8c86lkifr.apps.googleusercontent.com</string>
+	<string>687814096056-f0cmg08us95k2cgbunl3aa6dqli590m2.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.620028397667-nftm8l4cjnrgkcpju660rmf8c86lkifr</string>
+	<string>com.googleusercontent.apps.687814096056-f0cmg08us95k2cgbunl3aa6dqli590m2</string>
 	<key>ANDROID_CLIENT_ID</key>
-	<string>620028397667-8blr8b0t2hivbnqtpvafb5norr0gjcar.apps.googleusercontent.com</string>
+	<string>687814096056-j3n53cunqlfbhqmjkj2qfubflngeq05k.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyASB9tJ7KogVJfH0A9ObiAcdyt-KFB5vyc</string>
+	<string>AIzaSyBD_qBi1Bgy4U9jYNYo0ye8Pw5YlULjHjU</string>
 	<key>GCM_SENDER_ID</key>
-	<string>620028397667</string>
+	<string>687814096056</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.somisaehyun.shalomdomitory</string>
+	<string>com.somisaehyun.hanoimall</string>
 	<key>PROJECT_ID</key>
-	<string>tomator-1e3fc</string>
+	<string>hanoimall</string>
 	<key>STORAGE_BUCKET</key>
-	<string>tomator-1e3fc.appspot.com</string>
+	<string>hanoimall.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:620028397667:ios:e5f4fb6675d1dff0245056</string>
+	<string>1:687814096056:ios:45bc7ddee4313bae5af04d</string>
 </dict>
 </plist>

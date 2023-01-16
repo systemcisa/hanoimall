@@ -1,4 +1,4 @@
-package com.somiseojun.shalomhouse
+package com.somiseojun.hanoimall
 
 import io.flutter.embedding.android.FlutterActivity
 
