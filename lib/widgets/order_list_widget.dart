@@ -48,63 +48,58 @@ class OrderListWidget extends StatelessWidget {
               width: common_sm_padding,
             ),
             Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                child: Row(
                   children: [
-                    Text(
-                      order.title,
-                      style: TextStyle(color: (order.negotiable == true)
-                          ? Colors.black12
-                          : Colors.black,),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            order.studentname,
+                            maxLines: 1,
+                            style: TextStyle(color: (order.completion == true)
+                                ? Colors.black12
+                                : Colors.black,),
+                          ),
+                          Text(
+                            order.price.toString()+".000원",
+                            style: TextStyle(color: (order.completion == true)
+                                ? Colors.black12
+                                : Colors.black,),
+                          ),
+                          Text(
+                            DateFormat('MM-dd kkmm').format(order.createdDate),
+                            style: TextStyle(color: (order.completion == true)
+                                ? Colors.black12
+                                : Colors.black,),
+                          ),
+                        ],
+                      ),
                     ),
-                    Text(
-                      order.detail,
-                      maxLines:1,
-                      style: TextStyle(color: (order.negotiable == true)
-                          ? Colors.black12
-                          : Colors.black,),
+                    const SizedBox(
+                      width: 50,
                     ),
-                    Text("작업의뢰 작성일",
-                      style: TextStyle(color: (order.negotiable == true)
-                        ? Colors.black12
-                        : Colors.black,),),
-                    Text(
-                      DateFormat('MM-dd kkmm').format(order.createdDate),
-
-                      style: TextStyle(color: (order.negotiable == true)
-                          ? Colors.black12
-                          : Colors.black,),
-                    ),
-                  ],
-                )
-            ),
-            const SizedBox(width: 50,),
-            Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('작성자 정보',style: TextStyle(color: (order.negotiable == true)
-                        ? Colors.black12
-                        : Colors.black,),),
-                    Text(
-                      order.studentname,
-                      style: TextStyle(color: (order.negotiable == true)
-                          ? Colors.black12
-                          : Colors.black,),
-                    ),
-                    Text(
-                      order.studentnum,
-                      style: TextStyle(color: (order.negotiable == true)
-                          ? Colors.black12
-                          : Colors.black,),
-                    ),
-                    const SizedBox(height: 10,),
-                    Text(
-                      "작업완료",
-                      style: TextStyle(color: (order.negotiable == true)
-                          ? Colors.redAccent
-                          : Colors.transparent,),
-                    ),
+                    Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Text("택배문제",
+                                style: TextStyle(
+                                  color: (order.delivery== true)
+                                      ? Colors.redAccent
+                                      : Colors.transparent,
+                                )),
+                            Text("완료",
+                                style: TextStyle(
+                                  color: (order.completion== true)
+                                      ? Colors.black
+                                      : Colors.transparent,
+                                )),
+                          ],
+                        )),
                   ],
                 )
             ),

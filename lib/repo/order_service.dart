@@ -41,8 +41,8 @@ class OrderService {
     CollectionReference<Map<String, dynamic>> collectionReference =
         FirebaseFirestore.instance.collection(COL_ORDERS);
     QuerySnapshot<Map<String, dynamic>> snapshots = await collectionReference
-        .where(DOC_USERKEY, isEqualTo: userKey)
-       // .orderBy("createdDate", descending: true)
+       // .where(DOC_USERKEY, isEqualTo: userKey)
+        .orderBy("createdDate", descending: true)
         .get();
 
     List<OrderModel> orders = [];

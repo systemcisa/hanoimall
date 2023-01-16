@@ -7,7 +7,6 @@ import 'package:hanoimall/data/user_model.dart';
 import 'package:hanoimall/router/locations.dart';
 import 'package:hanoimall/screens/home/me_page.dart';
 import 'package:hanoimall/screens/home/orders_page.dart';
-import 'package:hanoimall/screens/home/home_page.dart';
 import 'package:hanoimall/screens/home/records_page.dart';
 import 'package:hanoimall/states/user_notifier.dart';
 import 'package:hanoimall/widgets/expandable_fab.dart';
@@ -32,7 +31,6 @@ class _HomeScreenState extends State<HomeScreen> {
         : IndexedStack(
         index: _bottomSelectedIndex,
         children: [
-          HomePage(),
           OrdersPage(userKey: userModel.userKey),
           RecordsPage(userKey: userModel.userKey),
           const MePage(),
@@ -63,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
 
       appBar: AppBar(
-        title: Text('SHALOM HOUSE', style: Theme.of(context).appBarTheme.titleTextStyle,),
+        title: Text('SOMI MALL', style: Theme.of(context).appBarTheme.titleTextStyle,),
         actions: [
           IconButton(
               onPressed: () {
@@ -78,9 +76,8 @@ class _HomeScreenState extends State<HomeScreen> {
           selectedItemColor: Colors.blueAccent,
           unselectedItemColor: Colors.green,
           items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home, color: Colors.grey), label: '홈',),
-            BottomNavigationBarItem(icon: Icon(Icons.build, color: Colors.grey), label: '설비관리'),
-            BottomNavigationBarItem(icon: Icon(Icons.bolt, color: Colors.grey,), label: '전기관리'),
+            BottomNavigationBarItem(icon: Icon(Icons.attach_money, color: Colors.grey), label: '손님주문'),
+            BottomNavigationBarItem(icon: Icon(Icons.add_shopping_cart, color: Colors.grey,), label: '사입'),
             BottomNavigationBarItem(icon: Icon(Icons.account_circle, color: Colors.grey), label: 'me'),
           ],
           onTap: (index){

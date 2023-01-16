@@ -12,8 +12,6 @@ class RecordModel {
   late String category;
   late num price;
   late bool negotiable;
-  late bool delivery;
-  late bool completion;
   late String detail;
   late String address1;
   late String address2;
@@ -43,8 +41,6 @@ class RecordModel {
     required this.category,
     required this.price,
     required this.negotiable,
-    required this.delivery,
-    required this.completion,
     required this.detail,
     required this.address1,
     required this.address2,
@@ -71,13 +67,10 @@ class RecordModel {
      // imageDownloadUrls = json[DOC_IMAGEDOWNLOADURLS] != null
      //     ? json[DOC_IMAGEDOWNLOADURLS].cast<String>()
      //     : [];
-    title = json[DOC_TITLE] ?? "";
     recorddate = json[DOC_RECORDDATE] ?? "";
     category = json[DOC_CATEGORY] ?? "none";
     price = json[DOC_PRICE] ?? 0;
     negotiable = json[DOC_NEGOTIABLE] ?? false;
-    delivery = json[DOC_DELIVERY] ?? false;
-    completion = json[DOC_COMPLETION] ?? false;
     detail = json[DOC_DETAIL] ?? "";
     address1 = json[DOC_ADDRESS1] ?? "";
     address2 = json[DOC_ADDRESS2] ?? "";
@@ -111,12 +104,9 @@ class RecordModel {
     map[DOC_STUDENTNAME] = studentname;
     map[DOC_STUDENTNUM] = studentnum;
  //   map[DOC_IMAGEDOWNLOADURLS] = imageDownloadUrls;
-    map[DOC_TITLE] = title;
     map[DOC_RECORDDATE] = recorddate;
     map[DOC_CATEGORY] = category;
     map[DOC_PRICE] = price;
-    map[DOC_NEGOTIABLE] = negotiable;
-    map[DOC_NEGOTIABLE] = delivery;
     map[DOC_NEGOTIABLE] = negotiable;
     map[DOC_DETAIL] = detail;
     map[DOC_ADDRESS1] = address1;
@@ -142,7 +132,6 @@ class RecordModel {
   Map<String, dynamic> toMinJson() {
     var map = <String, dynamic>{};
 //    map[DOC_IMAGEDOWNLOADURLS] = imageDownloadUrls.sublist(0, 1);
-    map[DOC_TITLE] = title;
     map[DOC_PRICE] = price;
     return map;
   }

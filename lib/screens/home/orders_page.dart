@@ -34,7 +34,7 @@ class _OrdersPageState extends State<OrdersPage> {
         Size size = MediaQuery
             .of(context)
             .size;
-        final imgSize = size.width / 4;
+        final imgSize = size.width / 7;
               return AnimatedSwitcher(
                   duration: Duration(milliseconds: 300),
         //          child: _listView(imgSize),);

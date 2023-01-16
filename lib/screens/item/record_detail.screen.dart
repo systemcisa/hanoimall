@@ -1,14 +1,10 @@
 import 'package:beamer/src/beamer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:hanoimall/constants/common_size.dart';
-import 'package:hanoimall/data/order_model.dart';
 import 'package:hanoimall/data/record_model.dart';
-import 'package:hanoimall/repo/order_service.dart';
 import 'package:intl/intl.dart';
 import 'package:hanoimall/repo/record_service.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class RecordDetailScreen extends StatefulWidget {
   final String recordKey;
@@ -62,17 +58,6 @@ class _RecordDetailScreenState extends State<RecordDetailScreen> {
     super.dispose();
   }
 
-  void _goToDelivery(String orderKey, bool negotiable) async {
-    FirebaseFirestore.instance.collection("records").doc(orderKey).update({
-      "delivery": true,
-    });
-  }
-  void _goToCompletion(String orderKey, bool negotiable) async {
-    FirebaseFirestore.instance.collection("records").doc(orderKey).update({
-      "completion": true,
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<RecordModel>(
@@ -88,46 +73,19 @@ class _RecordDetailScreenState extends State<RecordDetailScreen> {
                   fit: StackFit.expand,
                   children: [
                     Scaffold(
-                      bottomNavigationBar: SafeArea(
-                        top: false,
-                        bottom: true,
-                        child: Container(
-                          height: 60,
-                          decoration: BoxDecoration(
-                              border: Border(
-                                  top: BorderSide(color: Colors.grey[300]!))),
-                          child: Padding(
-                            padding: const EdgeInsets.all(common_sm_padding),
-                            child: Row(
-                              children: [
-                                TextButton(
-                                    onPressed: () async {
-                                      _goToDelivery(recordModel.recordKey, true);
-                                      context.beamBack();
-                                    },
-                                    child: const Text('택배보냄')),
-                                TextButton(
-                                    onPressed: () async {
-                                      _goToCompletion(recordModel.recordKey, true);
-                                      context.beamBack();
-                                    },
-                                    child: const Text('완료')),
-                              ],
-                            ),
-
-                          ),
-                        ),
-                      ),
                       body: CustomScrollView(
                         controller: _scrollController,
                         slivers: [
-                   //       _imagesAppBar(recordModel),
                           SliverPadding(
                             padding: const EdgeInsets.all(common_padding),
                             sliver: SliverList(
                                 delegate: SliverChildListDelegate([
-                                  SizedBox(height: 60,),
-                              Text(DateFormat('MM-dd KKmm').format(recordModel.createdDate),
+                              SizedBox(
+                                height: 60,
+                              ),
+                              Text(
+                                  DateFormat('MM-dd KKmm')
+                                      .format(recordModel.createdDate),
                                   style: const TextStyle(
                                       color: Colors.black, fontSize: 20)),
                               Divider(
@@ -136,6 +94,338 @@ class _RecordDetailScreenState extends State<RecordDetailScreen> {
                                 color: Colors.grey[200],
                               ),
                               _textGap,
+                              Row(
+                                children: [
+                                  Expanded(
+                                      child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        '신발A',
+                                        style: TextStyle(
+                                            color: Colors.redAccent,
+                                            fontSize: 20),
+                                      ),
+                                      Text(
+                                        recordModel.address1,
+                                        style: TextStyle(
+                                          color:
+                                              (recordModel.negotiable == true)
+                                                  ? Colors.black12
+                                                  : Colors.black,
+                                        ),
+                                      ),
+                                    ],
+                                  )),
+                                  Expanded(
+                                      child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text('신발B',style: TextStyle(
+                color: Colors.orangeAccent,
+                fontSize: 20)),
+                                      Text(
+                                        recordModel.address2,
+                                        style: TextStyle(
+                                          color:
+                                              (recordModel.negotiable == true)
+                                                  ? Colors.black12
+                                                  : Colors.black,
+                                        ),
+                                      ),
+                                    ],
+                                  )),
+                                ],
+                              ),
+                              Divider(
+                                height: 2,
+                                thickness: 2,
+                                color: Colors.grey[200],
+                              ),
+                              Row(
+                                children: [
+                                  Expanded(
+                                      child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text('신발C',style: TextStyle(
+                                          color: Colors.purpleAccent,
+                                          fontSize: 20)),
+                                      Text(
+                                        recordModel.address3,
+                                        style: TextStyle(
+                                          color:
+                                              (recordModel.negotiable == true)
+                                                  ? Colors.black12
+                                                  : Colors.black,
+                                        ),
+                                      ),
+                                    ],
+                                  )),
+                                  Expanded(
+                                      child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text('신발D',style: TextStyle(
+                                          color: Colors.greenAccent,
+                                          fontSize: 20)),
+                                      Text(
+                                        recordModel.address4,
+                                        style: TextStyle(
+                                          color:
+                                              (recordModel.negotiable == true)
+                                                  ? Colors.black12
+                                                  : Colors.black,
+                                        ),
+                                      ),
+                                    ],
+                                  )),
+                                ],
+                              ),
+                              Divider(
+                                height: 2,
+                                thickness: 2,
+                                color: Colors.grey[200],
+                              ),
+                              Row(
+                                children: [
+                                  Expanded(
+                                      child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text('NUZZON',style: TextStyle(
+                                          color: Colors.blueAccent,
+                                          fontSize: 20)),
+                                      Text(
+                                        recordModel.address5,
+                                        style: TextStyle(
+                                          color:
+                                              (recordModel.negotiable == true)
+                                                  ? Colors.black12
+                                                  : Colors.black,
+                                        ),
+                                      ),
+                                    ],
+                                  )),
+                                  Expanded(
+                                      child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text('THEOT',style: TextStyle(
+                                          color: Colors.redAccent,
+                                          fontSize: 20)),
+                                      Text(
+                                        recordModel.address6,
+                                        style: TextStyle(
+                                          color:
+                                              (recordModel.negotiable == true)
+                                                  ? Colors.black12
+                                                  : Colors.black,
+                                        ),
+                                      ),
+                                    ],
+                                  )),
+                                ],
+                              ),
+                              Divider(
+                                height: 2,
+                                thickness: 2,
+                                color: Colors.grey[200],
+                              ),
+                              Row(
+                                children: [
+                                  Expanded(
+                                      child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text('DPH',style: TextStyle(
+                                          color: Colors.orangeAccent,
+                                          fontSize: 20)),
+                                      Text(
+                                        recordModel.address7,
+                                        style: TextStyle(
+                                          color:
+                                              (recordModel.negotiable == true)
+                                                  ? Colors.black12
+                                                  : Colors.black,
+                                        ),
+                                      ),
+                                    ],
+                                  )),
+                                  Expanded(
+                                      child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text('NPH',style: TextStyle(
+                                          color: Colors.purpleAccent,
+                                          fontSize: 20)),
+                                      Text(
+                                        recordModel.address8,
+                                        style: TextStyle(
+                                          color:
+                                              (recordModel.negotiable == true)
+                                                  ? Colors.black12
+                                                  : Colors.black,
+                                        ),
+                                      ),
+                                    ],
+                                  )),
+                                ],
+                              ),
+                              Divider(
+                                height: 2,
+                                thickness: 2,
+                                color: Colors.grey[200],
+                              ),
+                              Row(
+                                children: [
+                                  Expanded(
+                                      child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text('CPH',style: TextStyle(
+                                          color: Colors.greenAccent,
+                                          fontSize: 20)),
+                                      Text(
+                                        recordModel.address9,
+                                        style: TextStyle(
+                                          color:
+                                              (recordModel.negotiable == true)
+                                                  ? Colors.black12
+                                                  : Colors.black,
+                                        ),
+                                      ),
+                                    ],
+                                  )),
+                                  Expanded(
+                                      child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text('STUDIO W',style: TextStyle(
+                                          color: Colors.blueAccent,
+                                          fontSize: 20)),
+                                      Text(
+                                        recordModel.address10,
+                                        style: TextStyle(
+                                          color:
+                                              (recordModel.negotiable == true)
+                                                  ? Colors.black12
+                                                  : Colors.black,
+                                        ),
+                                      ),
+                                    ],
+                                  )),
+                                ],
+                              ),
+                              Divider(
+                                height: 2,
+                                thickness: 2,
+                                color: Colors.grey[200],
+                              ),
+                              Row(
+                                children: [
+                                  Expanded(
+                                      child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text('TECHNO',style: TextStyle(
+                                          color: Colors.redAccent,
+                                          fontSize: 20)),
+                                      Text(
+                                        recordModel.address11,
+                                        style: TextStyle(
+                                          color:
+                                              (recordModel.negotiable == true)
+                                                  ? Colors.black12
+                                                  : Colors.black,
+                                        ),
+                                      ),
+                                    ],
+                                  )),
+                                  Expanded(
+                                      child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text('DWP',style: TextStyle(
+                                          color: Colors.orangeAccent,
+                                          fontSize: 20)),
+                                      Text(
+                                        recordModel.address12,
+                                        style: TextStyle(
+                                          color:
+                                              (recordModel.negotiable == true)
+                                                  ? Colors.black12
+                                                  : Colors.black,
+                                        ),
+                                      ),
+                                    ],
+                                  )),
+                                ],
+                              ),
+                              Divider(
+                                height: 2,
+                                thickness: 2,
+                                color: Colors.grey[200],
+                              ),
+                              Row(
+                                children: [
+                                  Expanded(
+                                      child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text('APM',style: TextStyle(
+                                          color: Colors.purpleAccent,
+                                          fontSize: 20)),
+                                      Text(
+                                        recordModel.address13,
+                                        style: TextStyle(
+                                          color:
+                                              (recordModel.negotiable == true)
+                                                  ? Colors.black12
+                                                  : Colors.black,
+                                        ),
+                                      ),
+                                    ],
+                                  )),
+                                  Expanded(
+                                      child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text('JPH',style: TextStyle(
+                                          color: Colors.greenAccent,
+                                          fontSize: 20)),
+                                      Text(
+                                        recordModel.address14,
+                                        style: TextStyle(
+                                          color:
+                                              (recordModel.negotiable == true)
+                                                  ? Colors.black12
+                                                  : Colors.black,
+                                        ),
+                                      ),
+                                    ],
+                                  )),
+                                ],
+                              ),
+                              Divider(
+                                height: 2,
+                                thickness: 2,
+                                color: Colors.grey[200],
+                              ),
                               Text(
                                 recordModel.detail,
                                 style: Theme.of(context).textTheme.bodyText1,
@@ -165,43 +455,6 @@ class _RecordDetailScreenState extends State<RecordDetailScreen> {
                         ],
                       ),
                     ),
-                    Positioned(
-                      left: 0,
-                      right: 0,
-                      top: 0,
-                      height: kToolbarHeight + _statusBarHeight!,
-                      child: Container(
-                        height: kToolbarHeight + _statusBarHeight!,
-                        decoration: const BoxDecoration(
-                            gradient: LinearGradient(
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                                colors: [
-                              Colors.black12,
-                              Colors.black12,
-                              Colors.black12,
-                              Colors.black12,
-                              Colors.transparent
-                            ])),
-                      ),
-                    ),
-                    Positioned(
-                      left: 0,
-                      right: 0,
-                      top: 0,
-                      height: kToolbarHeight + _statusBarHeight!,
-                      child: Scaffold(
-                        backgroundColor: Colors.transparent,
-                        appBar: AppBar(
-                          shadowColor: Colors.transparent,
-                          backgroundColor: isAppbarCollapsed
-                              ? Colors.white
-                              : Colors.transparent,
-                          foregroundColor:
-                              isAppbarCollapsed ? Colors.black87 : Colors.white,
-                        ),
-                      ),
-                    )
                   ],
                 );
               },
@@ -210,38 +463,4 @@ class _RecordDetailScreenState extends State<RecordDetailScreen> {
           return Container();
         });
   }
-
-  // SliverAppBar _imagesAppBar(RecordModel recordModel) {
-  //   return SliverAppBar(
-  //     expandedHeight: _size!.width,
-  //     pinned: true,
-  //     flexibleSpace: FlexibleSpaceBar(
-  //       title: SizedBox(
-  //         child: SmoothPageIndicator(
-  //             controller: _pageController, // PageController
-  //             count: recordModel.imageDownloadUrls.length,
-  //             effect: const WormEffect(
-  //                 dotColor: Colors.white24,
-  //                 activeDotColor: Colors.white,
-  //                 radius: 2,
-  //                 dotHeight: 4,
-  //                 dotWidth: 4), // yo// ur preferred effect
-  //             onDotClicked: (index) {}),
-  //       ),
-  //       centerTitle: true,
-  //       background: PageView.builder(
-  //         controller: _pageController,
-  //         allowImplicitScrolling: true,
-  //         itemBuilder: (context, index) {
-  //           return ExtendedImage.network(
-  //             recordModel.imageDownloadUrls[index],
-  //             fit: BoxFit.cover,
-  //             scale: 0.1,
-  //           );
-  //         },
-  //         itemCount: recordModel.imageDownloadUrls.length,
-  //       ),
-  //     ),
-  //   );
-  // }
 }

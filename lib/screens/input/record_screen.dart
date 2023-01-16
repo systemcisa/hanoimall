@@ -8,7 +8,6 @@ import 'package:hanoimall/constants/common_size.dart';
 import 'package:hanoimall/data/record_model.dart';
 import 'package:hanoimall/repo/image_storage.dart';
 import 'package:hanoimall/repo/record_service.dart';
-import 'package:hanoimall/screens/input/multi_image_select.dart';
 import 'package:hanoimall/states/category_notifier.dart';
 import 'package:hanoimall/states/select_image_notifier.dart';
 import 'package:hanoimall/states/user_notifier.dart';
@@ -43,11 +42,8 @@ class _RecordScreenState extends State<RecordScreen> {
     endIndent: common_padding,
   );
 
-
-
   TextEditingController _nameController = TextEditingController();
   TextEditingController _priceController = TextEditingController();
-  TextEditingController _addressController = TextEditingController();
   TextEditingController _addressController1 = TextEditingController();
   TextEditingController _addressController2 = TextEditingController();
   TextEditingController _addressController3 = TextEditingController();
@@ -101,8 +97,6 @@ class _RecordScreenState extends State<RecordScreen> {
         address13: _addressController13.text,
         address14: _addressController14.text,
         isChecked: _isChecked,
-        delivery: _isDelivery,
-        completion: _isCompletion,
         category: context.read<CategoryNotifier>().currentCategoryInEng,
         price: price ?? 0,
         negotiable: _seuggestPriceSelected,
@@ -162,62 +156,323 @@ class _RecordScreenState extends State<RecordScreen> {
                 ],
               ),
               body: ListView(children: [
-             //   MultiImageSelect(),
-           //     _divider,
-                TextFormField(
-                  controller: _nameController,
-                  decoration: InputDecoration(
-                      hintText: '신청 날짜 MM.DD',
-                      contentPadding:
-                          const EdgeInsets.symmetric(horizontal: common_padding),
-                      border: _border,
-                      enabledBorder: _border,
-                      focusedBorder: _border),
+                SizedBox(height: 20,),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Text('신발A',style: TextStyle(color: Colors.redAccent, fontSize: 15),),
+                          TextFormField(
+                            controller: _addressController1,
+                            keyboardType: TextInputType.multiline,
+                            maxLines: null,
+                            decoration: InputDecoration(
+                                hintText: '주소+사입비',
+                                contentPadding:
+                                const EdgeInsets.symmetric(horizontal: common_padding),
+                                border: _border,
+                                enabledBorder: _border,
+                                focusedBorder: _border),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Text('신발B',style: TextStyle(color: Colors.orangeAccent, fontSize: 15),),
+                          TextFormField(
+                            controller: _addressController2,
+                            keyboardType: TextInputType.multiline,
+                            maxLines: null,
+                            decoration: InputDecoration(
+                                hintText: '주소+사입비',
+                                contentPadding:
+                                const EdgeInsets.symmetric(horizontal: common_padding),
+                                border: _border,
+                                enabledBorder: _border,
+                                focusedBorder: _border),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
                 _divider,
-
-                _divider,
-                TextFormField(
-                  controller: _addressController,
-                  decoration: InputDecoration(
-                      hintText: '호실',
-                      contentPadding:
-                          const EdgeInsets.symmetric(horizontal: common_padding),
-                      border: _border,
-                      enabledBorder: _border,
-                      focusedBorder: _border),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Text('신발C',style: TextStyle(color: Colors.purpleAccent, fontSize: 15),),
+                          TextFormField(
+                            controller: _addressController3,
+                            keyboardType: TextInputType.multiline,
+                            maxLines: null,
+                            decoration: InputDecoration(
+                                hintText: '주소+사입비',
+                                contentPadding:
+                                const EdgeInsets.symmetric(horizontal: common_padding),
+                                border: _border,
+                                enabledBorder: _border,
+                                focusedBorder: _border),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Text('신발D',style: TextStyle(color: Colors.greenAccent, fontSize: 15),),
+                          TextFormField(
+                            controller: _addressController4,
+                            keyboardType: TextInputType.multiline,
+                            maxLines: null,
+                            decoration: InputDecoration(
+                                hintText: '주소+사입비',
+                                contentPadding:
+                                const EdgeInsets.symmetric(horizontal: common_padding),
+                                border: _border,
+                                enabledBorder: _border,
+                                focusedBorder: _border),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
                 _divider,
-
+                Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Text('NUZZON',style: TextStyle(color: Colors.blueAccent, fontSize: 15),),
+                          TextFormField(
+                            controller: _addressController5,
+                            keyboardType: TextInputType.multiline,
+                            maxLines: null,
+                            decoration: InputDecoration(
+                                hintText: '주소+사입비',
+                                contentPadding:
+                                const EdgeInsets.symmetric(horizontal: common_padding),
+                                border: _border,
+                                enabledBorder: _border,
+                                focusedBorder: _border),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Text('THEOT',style: TextStyle(color: Colors.redAccent, fontSize: 15),),
+                          TextFormField(
+                            controller: _addressController6,
+                            keyboardType: TextInputType.multiline,
+                            maxLines: null,
+                            decoration: InputDecoration(
+                                hintText: '주소+사입비',
+                                contentPadding:
+                                const EdgeInsets.symmetric(horizontal: common_padding),
+                                border: _border,
+                                enabledBorder: _border,
+                                focusedBorder: _border),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
                 _divider,
-
+                Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Text('DHP',style: TextStyle(color: Colors.orangeAccent, fontSize: 15),),
+                          TextFormField(
+                            controller: _addressController7,
+                            keyboardType: TextInputType.multiline,
+                            maxLines: null,
+                            decoration: InputDecoration(
+                                hintText: '주소+사입비',
+                                contentPadding:
+                                const EdgeInsets.symmetric(horizontal: common_padding),
+                                border: _border,
+                                enabledBorder: _border,
+                                focusedBorder: _border),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Text('NPH',style: TextStyle(color: Colors.purpleAccent, fontSize: 15),),
+                          TextFormField(
+                            controller: _addressController8,
+                            keyboardType: TextInputType.multiline,
+                            maxLines: null,
+                            decoration: InputDecoration(
+                                hintText: '주소+사입비',
+                                contentPadding:
+                                const EdgeInsets.symmetric(horizontal: common_padding),
+                                border: _border,
+                                enabledBorder: _border,
+                                focusedBorder: _border),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                _divider,
+                Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Text('CPH',style: TextStyle(color: Colors.greenAccent, fontSize: 15),),
+                          TextFormField(
+                            controller: _addressController9,
+                            keyboardType: TextInputType.multiline,
+                            maxLines: null,
+                            decoration: InputDecoration(
+                                hintText: '주소+사입비',
+                                contentPadding:
+                                const EdgeInsets.symmetric(horizontal: common_padding),
+                                border: _border,
+                                enabledBorder: _border,
+                                focusedBorder: _border),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Text('STUDIO W',style: TextStyle(color: Colors.blueAccent, fontSize: 15),),
+                          TextFormField(
+                            controller: _addressController10,
+                            keyboardType: TextInputType.multiline,
+                            maxLines: null,
+                            decoration: InputDecoration(
+                                hintText: '주소+사입비',
+                                contentPadding:
+                                const EdgeInsets.symmetric(horizontal: common_padding),
+                                border: _border,
+                                enabledBorder: _border,
+                                focusedBorder: _border),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                _divider,
+                Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Text('TECHNO',style: TextStyle(color: Colors.redAccent, fontSize: 15),),
+                          TextFormField(
+                            controller: _addressController11,
+                            keyboardType: TextInputType.multiline,
+                            maxLines: null,
+                            decoration: InputDecoration(
+                                hintText: '주소+사입비',
+                                contentPadding:
+                                const EdgeInsets.symmetric(horizontal: common_padding),
+                                border: _border,
+                                enabledBorder: _border,
+                                focusedBorder: _border),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Text('DWP',style: TextStyle(color: Colors.blueAccent, fontSize: 15),),
+                          TextFormField(
+                            controller: _addressController12,
+                            keyboardType: TextInputType.multiline,
+                            maxLines: null,
+                            decoration: InputDecoration(
+                                hintText: '주소+사입비',
+                                contentPadding:
+                                const EdgeInsets.symmetric(horizontal: common_padding),
+                                border: _border,
+                                enabledBorder: _border,
+                                focusedBorder: _border),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                _divider,
+                Row(
+                  children: [
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Text('APM',style: TextStyle(color: Colors.black, fontSize: 15),),
+                          TextFormField(
+                            controller: _addressController13,
+                            keyboardType: TextInputType.multiline,
+                            maxLines: null,
+                            decoration: InputDecoration(
+                                hintText: '주소+사입비',
+                                contentPadding:
+                                const EdgeInsets.symmetric(horizontal: common_padding),
+                                border: _border,
+                                enabledBorder: _border,
+                                focusedBorder: _border),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Text('JWP',style: TextStyle(color: Colors.orangeAccent, fontSize: 15),),
+                          TextFormField(
+                            controller: _addressController14,
+                            keyboardType: TextInputType.multiline,
+                            maxLines: null,
+                            decoration: InputDecoration(
+                                hintText: '주소+사입비',
+                                contentPadding:
+                                const EdgeInsets.symmetric(horizontal: common_padding),
+                                border: _border,
+                                enabledBorder: _border,
+                                focusedBorder: _border),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
                 _divider,
                 TextFormField(
                   controller: _detailController,
                   maxLines: null,
                   keyboardType: TextInputType.multiline,
                   decoration: InputDecoration(
-                      hintText: ''''내용<구체적으로 적어주세요>
-    예) 김샬롬 옷장 두 번째 서랍이 안닫혀요''',
+                      hintText: '사입 내용',
                       contentPadding:
                           const EdgeInsets.symmetric(horizontal: common_padding),
                       border: _border,
                       enabledBorder: _border,
                       focusedBorder: _border),
                 ),
-                _divider,
-
-
               ]),
             ));
       },
     );
-  }
-
-  void showToast(String value) {
-    Fluttertoast.showToast(
-        msg: "$value 선택",
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.BOTTOM);
   }
 }

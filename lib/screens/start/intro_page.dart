@@ -2,8 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:hanoimall/constants/common_size.dart';
-import 'package:hanoimall/states/user_notifier.dart';
-import 'package:hanoimall/utils/logger.dart';
 import 'package:provider/provider.dart';
 
 class IntroPage extends StatelessWidget {
@@ -21,16 +19,16 @@ class IntroPage extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text('shalom house',
+                    Text('somimall',
                         style: Theme.of(context)
                             .textTheme
                             .headline3!
                             .copyWith(color: Theme.of(context).colorScheme.primary)),
                     SizedBox(
                         height: size.height/1.5,
-                        child: ExtendedImage.asset('assets/imgs/SAM_0161.jpeg')),
-                    const Text('서울여자대학교 샬롬하우스 기숙사입니다'),
-                    const Text('기숙사 광고 및 시설관리를 위한 앱입니다~'),
+                        child: ExtendedImage.asset('assets/imgs/somimalllogo.png')),
+                    const Text('somimall 우리 아들 처럼 열심히 잘 키워보자'),
+                    const Text('2023년도 우리 화이팅^^'),
                     const SizedBox(
                       height: 18,
                     ),
@@ -43,7 +41,7 @@ class IntroPage extends StatelessWidget {
                           backgroundColor: Theme.of(context).primaryColor
                       ),
                       child: Text(
-                          '         기숙사 앱 시작하기         ',
+                          '         somimall 앱 시작하기         ',
                           style: Theme.of(context).textTheme.button ),
                     ),
                   ],

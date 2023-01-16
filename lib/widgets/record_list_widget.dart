@@ -18,7 +18,7 @@ class RecordListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     if (imgSize == null) {
       Size size = MediaQuery.of(context).size;
-      imgSize = size.width / 6;
+      imgSize = size.width / 8;
     }
 
     return InkWell(
@@ -33,101 +33,59 @@ class RecordListWidget extends StatelessWidget {
       },
       child: SizedBox(
         height: imgSize,
-        child: Row(
+        child: Column(
           children: [
-            // SizedBox(
-            //     height: imgSize,
-            //     width: imgSize,
-            //     child: ExtendedImage.network(
-            //       record.imageDownloadUrls[0],
-            //       fit: BoxFit.cover,
-            //       shape: BoxShape.rectangle,
-            //       borderRadius: BorderRadius.circular(12),
-            //     )),
-            const SizedBox(
-              width: common_sm_padding,
+            Text(
+              DateFormat('MM-dd kkmm').format(record.createdDate),
+              style: TextStyle(
+                color: (record.negotiable == true)
+                    ? Colors.black12
+                    : Colors.black,
+              ),
             ),
-            Expanded(
-                child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            SizedBox(height: 10,),
+            Row(
               children: [
-                Text(
-                  record.title,
-                  style: TextStyle(
-                    color: (record.negotiable == true)
-                        ? Colors.black12
-                        : Colors.black,
-                  ),
+                Expanded(
+                    child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('신발A',style: TextStyle(
+                        color: Colors.redAccent,
+                        fontSize: 20),),
+                    Text(
+                      record.address1,
+                      maxLines: 1,
+                      style: TextStyle(
+                        color: (record.negotiable == true)
+                            ? Colors.black12
+                            : Colors.black,
+                      ),
+                    ),
+                  ],
+                )
                 ),
-                Text(
-                  record.detail,
-                  maxLines: 1,
-                  style: TextStyle(
-                    color: (record.negotiable == true)
-                        ? Colors.black12
-                        : Colors.black,
-                  ),
-                ),
-                Text(
-                  "작업의뢰 작성일",
-                  style: TextStyle(
-                    color: (record.negotiable == true)
-                        ? Colors.black12
-                        : Colors.black,
-                  ),
-                ),
-                Text(
-                  DateFormat('MM-dd kkmm').format(record.createdDate),
-                  style: TextStyle(
-                    color: (record.negotiable == true)
-                        ? Colors.black12
-                        : Colors.black,
-                  ),
+                Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('NUZZON',style: TextStyle(
+                            color: Colors.orangeAccent,
+                            fontSize: 20),),
+                        Text(
+                          record.address5,
+                          maxLines: 1,
+                          style: TextStyle(
+                            color: (record.negotiable == true)
+                                ? Colors.black12
+                                : Colors.black,
+                          ),
+                        ),
+                      ],
+                    )
                 ),
               ],
-            )),
-            const SizedBox(
-              width: 50,
             ),
-            Expanded(
-                child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  '작성자 정보',
-                  style: TextStyle(
-                    color: (record.negotiable == true)
-                        ? Colors.black12
-                        : Colors.black,
-                  ),
-                ),
-                Text(
-                  record.studentname,
-                  style: TextStyle(
-                    color: (record.negotiable == true)
-                        ? Colors.black12
-                        : Colors.black,
-                  ),
-                ),
-                Text(
-                  record.studentnum,
-                  style: TextStyle(
-                    color: (record.negotiable == true)
-                        ? Colors.black12
-                        : Colors.black,
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Text("작업완료",
-                    style: TextStyle(
-                      color: (record.negotiable == true)
-                          ? Colors.redAccent
-                          : Colors.transparent,
-                    )),
-              ],
-            )),
           ],
         ),
       ),

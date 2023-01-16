@@ -37,8 +37,8 @@ class RecordService{
   Future<List<RecordModel>> getRecords(String userKey) async{
     CollectionReference<Map<String, dynamic>> collectionReference = FirebaseFirestore.instance.collection(COL_RECORDS);
     QuerySnapshot<Map<String, dynamic>> snapshot = await collectionReference
-        .where(DOC_USERKEY, isEqualTo: userKey)
-        //.orderBy("createdDate", descending: true)
+     //   .where(DOC_USERKEY, isEqualTo: userKey)
+        .orderBy("createdDate", descending: true)
         .get();
 
     List<RecordModel> records=[];

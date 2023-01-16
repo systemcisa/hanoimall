@@ -62,9 +62,17 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
     super.dispose();
   }
 
-  void _goToChatroom(String orderKey, bool negotiable) async {
+  void _goToDelivery(String orderKey, bool negotiable) async {
     FirebaseFirestore.instance.collection("orders").doc(orderKey).update({
-      "negotiable": true,
+      "delivery": true,
+      "completion": false,
+    });
+  }
+
+  void _goToCompletion(String orderKey, bool negotiable) async {
+    FirebaseFirestore.instance.collection("orders").doc(orderKey).update({
+      "completion": true,
+      "delivery": false,
     });
   }
 
@@ -93,12 +101,29 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                                   top: BorderSide(color: Colors.grey[300]!))),
                           child: Padding(
                             padding: const EdgeInsets.all(common_sm_padding),
-                            child: TextButton(
-                                onPressed: () async {
-                                  _goToChatroom(orderModel.orderKey, true);
-                                  context.beamBack();
-                                },
-                                child: const Text('작업완료')),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: TextButton(
+                                      onPressed: () async {
+                                        _goToDelivery(
+                                            orderModel.orderKey, true);
+                                        context.beamBack();
+                                      },
+                                      child: const Text('택배보냄')),
+                                ),
+                                SizedBox(width: 10,),
+                                Expanded(
+                                  child: TextButton(
+                                      onPressed: () async {
+                                        _goToCompletion(
+                                            orderModel.orderKey, true);
+                                        context.beamBack();
+                                      },
+                                      child: const Text('완료')),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -111,69 +136,16 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                             sliver: SliverList(
                                 delegate: SliverChildListDelegate([
                               _divider,
-                              const Text("설비작업 ",
-                                  style: TextStyle(
-                                      color: Colors.black, fontSize: 20)),
-                              Text("요청일 : ${orderModel.orderdate}",
-                                  style: const TextStyle(
-                                      color: Colors.black, fontSize: 20)),
-                              Text(
-                                  "요청 건물 : ${orderModel.title} ${orderModel.address}호",
-                                  style: const TextStyle(
-                                      color: Colors.black, fontSize: 20)),
-                              Row(
-                                children: [
-                                  const Text("방 : ",
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                      )),
-                                  Text(
-                                      (orderModel.isChecked1 == true)
-                                          ? "A방 "
-                                          : "",
-                                      style:
-                                          const TextStyle(color: Colors.black)),
-                                  Text(
-                                      (orderModel.isChecked2 == true)
-                                          ? "B방 "
-                                          : "",
-                                      style:
-                                          const TextStyle(color: Colors.black)),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  const Text("번 : ",
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                      )),
-                                  Text(
-                                      (orderModel.isChecked3 == true)
-                                          ? "1번  "
-                                          : "",
-                                      style:
-                                          const TextStyle(color: Colors.black)),
-                                  Text(
-                                      (orderModel.isChecked4 == true)
-                                          ? "2번  "
-                                          : "",
-                                      style:
-                                          const TextStyle(color: Colors.black)),
-                                  Text(
-                                      (orderModel.isChecked5 == true)
-                                          ? "3번  "
-                                          : "",
-                                      style:
-                                          const TextStyle(color: Colors.black)),
-                                  Text(
-                                    (orderModel.isChecked6 == true)
-                                        ? "4번  "
-                                        : "",
-                                    style: const TextStyle(color: Colors.black),
-                                  ),
-                                ],
-                              ),
+                              Text('''${orderModel.studentname}
 
+${orderModel.price}.000원
+                              
+010 ${orderModel.phonenum}    
+                          
+${orderModel.address}''',
+                                  style: const TextStyle(
+                                      color: Colors.black, fontSize: 15)),
+                                  _textGap,
                               Row(
                                 children: [
                                   Text(
@@ -195,20 +167,6 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                                 style: Theme.of(context).textTheme.bodyText1,
                               ),
                               _textGap,
-                              // Text(
-                              //   '조회 33',
-                              //   style: Theme.of(context).textTheme.caption,
-                              // ),
-                              // _textGap,
-
-                              // MaterialButton(
-                              //     padding: EdgeInsets.zero,
-                              //     onPressed: () {},
-                              //     child: Align(
-                              //         alignment: Alignment.centerLeft,
-                              //         child: Text(
-                              //           '이 게시글 신고하기',
-                              //         ))),
                               Divider(
                                 height: 2,
                                 thickness: 2,
