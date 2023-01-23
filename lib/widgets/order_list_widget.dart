@@ -59,19 +59,25 @@ class OrderListWidget extends StatelessWidget {
                             maxLines: 1,
                             style: TextStyle(color: (order.completion == true)
                                 ? Colors.black12
-                                : Colors.black,),
+                                : Colors.black,fontSize: 12),
                           ),
                           Text(
-                            order.price.toString()+".000원",
+                           "구매"+ order.price1.toString()+".000원",
                             style: TextStyle(color: (order.completion == true)
                                 ? Colors.black12
-                                : Colors.black,),
+                                : Colors.black,fontSize: 12),
+                          ),
+                          Text(
+                            "판매"+order.price2.toString()+".000원",
+                            style: TextStyle(color: (order.completion == true)
+                                ? Colors.black12
+                                : Colors.black,fontSize: 12),
                           ),
                           Text(
                             DateFormat('MM-dd kkmm').format(order.createdDate),
                             style: TextStyle(color: (order.completion == true)
                                 ? Colors.black12
-                                : Colors.black,),
+                                : Colors.black,fontSize: 12),
                           ),
                         ],
                       ),

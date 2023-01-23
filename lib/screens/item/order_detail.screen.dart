@@ -138,7 +138,9 @@ class _OrderDetailScreenState extends State<OrderDetailScreen> {
                               _divider,
                               Text('''${orderModel.studentname}
 
-${orderModel.price}.000원
+구입 ${orderModel.price1}.000원
+
+판매 ${orderModel.price2}.000원
                               
 010 ${orderModel.phonenum}    
                           

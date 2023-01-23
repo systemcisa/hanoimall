@@ -46,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
             shape: const CircleBorder(),
             height: 40,
             color: Theme.of(context).colorScheme.primary,
-            child: const Icon(Icons.build_sharp),
+            child: const Icon(Icons.attach_money),
           ),
           MaterialButton(
             onPressed: () {
@@ -55,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
             shape: const CircleBorder(),
             height: 40,
             color: Theme.of(context).colorScheme.primary,
-            child: const Icon(Icons.bolt),
+            child: const Icon(Icons.add_shopping_cart),
           ),
         ],
       ),

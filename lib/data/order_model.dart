@@ -9,7 +9,8 @@ class OrderModel {
   late List<String> imageDownloadUrls;
   late String phonenum;
   late String category;
-  late num price;
+  late num price1;
+  late num price2;
   late bool negotiable;
   late bool delivery;
   late bool completion;
@@ -27,7 +28,8 @@ class OrderModel {
     required this.imageDownloadUrls,
     required this.phonenum,
     required this.category,
-    required this.price,
+    required this.price1,
+    required this.price2,
     required this.negotiable,
     required this.delivery,
     required this.completion,
@@ -47,7 +49,8 @@ class OrderModel {
         : [];
     phonenum = json[DOC_PHONENUM] ?? "";
     category = json[DOC_CATEGORY] ?? "none";
-    price = json[DOC_PRICE] ?? 0;
+    price1 = json[DOC_PRICE1] ?? 0;
+    price2 = json[DOC_PRICE2] ?? 0;
     negotiable = json[DOC_NEGOTIABLE] ?? false;
     delivery = json[DOC_DELIVERY] ?? false;
     completion = json[DOC_COMPLETION] ?? false;
@@ -74,7 +77,8 @@ class OrderModel {
     map[DOC_IMAGEDOWNLOADURLS] = imageDownloadUrls;
     map[DOC_PHONENUM] = phonenum;
     map[DOC_CATEGORY] = category;
-    map[DOC_PRICE] = price;
+    map[DOC_PRICE1] = price1;
+    map[DOC_PRICE2] = price2;
     map[DOC_NEGOTIABLE] = negotiable;
     map[DOC_DELIVERY] = delivery;
     map[DOC_COMPLETION] = completion;
@@ -89,7 +93,8 @@ class OrderModel {
     var map = <String, dynamic>{};
     map[DOC_IMAGEDOWNLOADURLS] = imageDownloadUrls.sublist(0, 1);
     map[DOC_PHONENUM] = phonenum;
-    map[DOC_PRICE] = price;
+    map[DOC_PRICE1] = price1;
+    map[DOC_PRICE2] = price2;
     return map;
   }
 
