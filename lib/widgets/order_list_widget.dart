@@ -12,7 +12,8 @@ class OrderListWidget extends StatelessWidget {
   bool _suggestPriceSelected = false;
   final OrderModel order;
   double? imgSize;
-  OrderListWidget(this.order,{Key? key, this.imgSize}) : super(key: key);
+
+  OrderListWidget(this.order, {Key? key, this.imgSize}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -49,66 +50,81 @@ class OrderListWidget extends StatelessWidget {
             ),
             Expanded(
                 child: Row(
-                  children: [
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            order.studentname,
-                            maxLines: 1,
-                            style: TextStyle(color: (order.completion == true)
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        order.studentname,
+                        maxLines: 1,
+                        style: TextStyle(
+                            color: (order.completion == true)
                                 ? Colors.black12
-                                : Colors.black,fontSize: 12),
-                          ),
-                          Text(
-                           "구매"+ order.price1.toString()+".000원",
-                            style: TextStyle(color: (order.completion == true)
-                                ? Colors.black12
-                                : Colors.black,fontSize: 12),
-                          ),
-                          Text(
-                            "판매"+order.price2.toString()+".000원",
-                            style: TextStyle(color: (order.completion == true)
-                                ? Colors.black12
-                                : Colors.black,fontSize: 12),
-                          ),
-                          Text(
-                            DateFormat('MM-dd kkmm').format(order.createdDate),
-                            style: TextStyle(color: (order.completion == true)
-                                ? Colors.black12
-                                : Colors.black,fontSize: 12),
-                          ),
-                        ],
+                                : Colors.black,
+                            fontSize: 12),
                       ),
-                    ),
+                      Text(
+                        "구매${order.count1* order.incomeprice1 +
+                              order.count2* order.incomeprice2 +
+                              order.count3* order.incomeprice3 +
+                              order.count4* order.incomeprice4 +
+                              order.count5* order.incomeprice5},000원",
+                        style: TextStyle(
+                            color: (order.completion == true)
+                                ? Colors.black12
+                                : Colors.black,
+                            fontSize: 12),
+                      ),
+                      Text(
+                        "판매${order.count1* order.outcomeprice1 +
+                            order.count2* order.outcomeprice2 +
+                            order.count3* order.outcomeprice3 +
+                            order.count4* order.outcomeprice4 +
+                            order.count5* order.outcomeprice5},000원",
+                        style: TextStyle(
+                            color: (order.completion == true)
+                                ? Colors.black12
+                                : Colors.black,
+                            fontSize: 12),
+                      ),
+                      Text(
+                        DateFormat('MM-dd kkmm').format(order.createdDate),
+                        style: TextStyle(
+                            color: (order.completion == true)
+                                ? Colors.black12
+                                : Colors.black,
+                            fontSize: 12),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  width: 50,
+                ),
+                Expanded(
+                    child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
                     const SizedBox(
-                      width: 50,
+                      height: 10,
                     ),
-                    Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Text("택배문제",
-                                style: TextStyle(
-                                  color: (order.delivery== true)
-                                      ? Colors.redAccent
-                                      : Colors.transparent,
-                                )),
-                            Text("완료",
-                                style: TextStyle(
-                                  color: (order.completion== true)
-                                      ? Colors.black
-                                      : Colors.transparent,
-                                )),
-                          ],
+                    Text("택배문제",
+                        style: TextStyle(
+                          color: (order.delivery == true)
+                              ? Colors.redAccent
+                              : Colors.transparent,
+                        )),
+                    Text("완료",
+                        style: TextStyle(
+                          color: (order.completion == true)
+                              ? Colors.black
+                              : Colors.transparent,
                         )),
                   ],
-                )
-            ),
+                )),
+              ],
+            )),
           ],
         ),
       ),
