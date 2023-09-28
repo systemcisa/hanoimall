@@ -85,7 +85,7 @@ class _AuthPageState extends State<AuthPage> {
                             return null;
                           } else {
                             //error
-                            return '전화번호 똑바로 입력해줄래?';
+                            return '전화번호를 확인 해주세요?';
                           }
                         }),
                     const SizedBox(
